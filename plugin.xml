@@ -72,8 +72,8 @@
     <resource-file src="sdk/android/libs/Xg_sdk_v2.42_20160111_1539.jar" target="libs/Xg_sdk_v2.42_20160111_1539.jar" />
     <resource-file src="sdk/android/libs/wup-1.0.0.E-SNAPSHOT.jar" target="libs/wup-1.0.0.E-SNAPSHOT.jar" />
 	
-    <lib-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsSecurity.so" arch="device"/>
-    <lib-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsWatchdog.so" arch="device"/>
+    <resource-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsSecurity.so" target="lib/armeabi/libtpnsSecurity.so"/>
+    <resource-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsWatchdog.so" target="lib/armeabi/libtpnsWatchdog.so"/>
   </platform>
   <!-- ios -->
   <platform name="ios">
