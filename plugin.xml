@@ -68,7 +68,6 @@
     <source-file src="src/android/XGPushReceiver.java" target-dir="src/net/sunlu/xgpush" />
     <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />
     <!-- Tencent XGPush SDK  -->
-    <source-file src="sdk/android/libs/android-support-v4.jar" target-dir="libs" />
     <source-file src="sdk/android/libs/jg_filter_sdk_1.1.jar" target-dir="libs" />
     <source-file src="sdk/android/libs/Xg_sdk_v2.42_20160111_1539.jar" target-dir="libs" />
     <source-file src="sdk/android/libs/wup-1.0.0.E-SNAPSHOT.jar" target-dir="libs" />
