@@ -10,6 +10,7 @@
    
   <preference name="ACCESS_ID" />
   <preference name="ACCESS_KEY" />
+  <preference name="PACKAGE" />
   
   <js-module name="xgpush" src="www/xgpush.js">
     <clobbers target="xgpush" />
@@ -58,7 +59,7 @@
       android:process=":xg_service_v2"></service>
       <service android:name="com.tencent.android.tpush.rpc.XGRemoteService" android:exported="true">
         <intent-filter>
-          <action android:name="$PACKAGE_NAME.PUSH_ACTION" />
+          <action android:name="$PACKAGE.PUSH_ACTION" />
         </intent-filter>
       </service>
       <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID"></meta-data>
