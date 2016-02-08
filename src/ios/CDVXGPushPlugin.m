@@ -184,7 +184,7 @@ static NSDictionary *_luanchOptions=nil;
     } errorCallback:^{
         // 失败
         NSLog(@"[XGPushPlugin] registerPush error");
-        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[NSString stringWithFormat: @"account = %@, token = %@", account,self.deviceToken]];
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
         [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     }];
     

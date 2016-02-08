@@ -76,7 +76,10 @@ function XGPush() {
                     me.channels[event.type].fire(event);
                 }
             },
-            null, "XGPush", "addListener", []
+            function (e) {
+                console.log("[ERROR] addListener: ", e);
+                //utils.alert("[ERROR] RegisterPush: ", JSON.stringify(e));
+            }, "XGPush", "addListener", []
             );
 
         me.registerPush(null, function (info) {
