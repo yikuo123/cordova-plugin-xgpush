@@ -47,5 +47,6 @@ typedef void (^CallbackBlock) (void);
 
 @property NSData* deviceToken;
 @property (nonatomic, copy) NSString* callbackId;
+@property NSDictionary* error;
 
 @end

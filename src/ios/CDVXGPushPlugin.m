@@ -110,6 +110,7 @@ static NSDictionary *_luanchOptions=nil;
 }
 
 - (void) didFailToRegisterForRemoteNotificationsWithError:(NSNotification*) notification {
+	self.error = notification.userInfo;
     NSString *str = [NSString stringWithFormat: @"Error: %@",notification];
     NSLog(@"[XGPushPlugin]%@",str);
 }
@@ -184,7 +185,7 @@ static NSDictionary *_luanchOptions=nil;
     } errorCallback:^{
         // 失败
         NSLog(@"[XGPushPlugin] registerPush error");
-        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:_error];
         [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
     }];
     
