@@ -7,14 +7,14 @@
   <keywords>cordova, push, chinese</keywords>
   <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
   <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
-   
+
   <preference name="ACCESS_ID" default="0"/>
-  <preference name="ACCESS_KEY" default=" "/>
-  
+  <preference name="ACCESS_KEY" default="A"/>
+
   <js-module name="xgpush" src="www/xgpush.js">
     <clobbers target="xgpush" />
   </js-module>
-  
+
   <!-- android -->
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
@@ -30,7 +30,9 @@
     </config-file>
 
     <!-- 因为用到了tools:replace 所以要添加命名空间  -->
-    <edit-config target="AndroidManifest.xml" parent='/manifest[@xmlns:tools="http://schemas.android.com/tools"]' mode="merge"></edit-config>
+    <edit-config file="AndroidManifest.xml" target="." mode="merge">
+      <manifest xmlns:tools="http://schemas.android.com/tools"></manifest>
+    </edit-config>
 
     <!-- 信鸽 JCenter依赖 -->
     <framework src="com.tencent.xinge:xinge:3.1.6-alpha" />
@@ -38,7 +40,7 @@
 
     <source-file src="src/android/XGPushPlugin.java" target-dir="src/net/sunlu/xgpush" />
     <source-file src="src/android/XGPushReceiver.java" target-dir="src/net/sunlu/xgpush" />
-    <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />    
+    <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />
   </platform>
 
   <!-- ios -->
