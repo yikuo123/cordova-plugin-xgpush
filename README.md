@@ -10,8 +10,7 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 打开控制台，进入 Cordova 项目目录，输入：
 
 ```bash
-cordova plugin add https://github.com/yikuo123/cordova-plugin-xgpush.git --save \
---variable ACCESS_ID="Your ID"  --variable ACCESS_KEY="Your Key"
+cordova plugin add https://github.com/yikuo123/cordova-plugin-xgpush.git --variable ACCESS_ID="Your ID" --variable ACCESS_KEY="Your Key"
 ```
 ## 示例
 ```js
