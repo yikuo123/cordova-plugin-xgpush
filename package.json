@@ -16,12 +16,12 @@
   ],  
   "repository": {
     "type": "git",
-    "url": "https://github.com/sunlu/cordova-plugin-xgpush"
+    "url": "https://github.com/yikuo123/cordova-plugin-xgpush"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sunlu/cordova-plugin-xgpush/issues"
+    "url": "https://github.com/yikuo123/cordova-plugin-xgpush/issues"
   },
-  "homepage": "https://github.com/sunlu/cordova-plugin-xgpush#readme"
+  "homepage": "https://github.com/yikuo123/cordova-plugin-xgpush#readme"
 }

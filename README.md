@@ -2,7 +2,7 @@
 
 SDK     | version
 ------- | --------------------------------
-android | Xg-Push-SDK-Android-2.42
+android | Xg-Push-SDK-Android-3.1
 ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 
 ## 安装方法
@@ -10,7 +10,7 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 打开控制台，进入 Cordova 项目目录，输入：
 
 ```bash
-cordova plugin add https://github.com/sunlu/cordova-plugin-xgpush --save \
+cordova plugin add https://github.com/yikuo123/cordova-plugin-xgpush.git --save \
 --variable ACCESS_ID="Your ID"  --variable ACCESS_KEY="Your Key"
 ```
 ## 示例

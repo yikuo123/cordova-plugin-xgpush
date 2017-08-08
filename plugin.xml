@@ -5,12 +5,11 @@
   <license>MIT</license>
   <author>sunlu</author>
   <keywords>cordova, push, chinese</keywords>
-  <repo>https://github.com/sunlu/cordova-plugin-xgpush.git</repo>
-  <issue>https://github.com/sunlu/cordova-plugin-xgpush/issues</issue>
+  <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
+  <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
    
-  <preference name="ACCESS_ID" />
-  <preference name="ACCESS_KEY" />
-  <preference name="PACKAGE" />
+  <preference name="ACCESS_ID" default="0"/>
+  <preference name="ACCESS_KEY" default=""/>
   
   <js-module name="xgpush" src="www/xgpush.js">
     <clobbers target="xgpush" />
@@ -23,61 +22,21 @@
         <param name="android-package" value="net.sunlu.xgpush.XGPushPlugin" />
       </feature>
     </config-file>
-    <config-file target="AndroidManifest.xml" parent="/manifest">
-      <uses-permission android:name="android.permission.INTERNET" />
-      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-      <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-      <uses-permission android:name="android.permission.RESTART_PACKAGES" />
-      <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-      <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-      <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-      <uses-permission android:name="android.permission.WAKE_LOCK" />
-      <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-      <uses-permission android:name="android.permission.GET_TASKS" />
-      <uses-permission android:name="android.permission.READ_LOGS" />
-      <uses-permission android:name="android.permission.VIBRATE" />
-    </config-file>
+
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-      <receiver android:name="com.tencent.android.tpush.XGPushReceiver" android:process=":xg_service_v2">
-        <intent-filter android:priority="0x7fffffff">
-          <action android:name="com.tencent.android.tpush.action.SDK" />
-          <action android:name="com.tencent.android.tpush.action.INTERNAL_PUSH_MESSAGE" />
-          <action android:name="android.intent.action.USER_PRESENT" />
-          <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-        </intent-filter>
-      </receiver>
-      <activity android:name="com.tencent.android.tpush.XGPushActivity" android:theme="@android:style/Theme.Translucent"
-      android:exported="false">
-        <intent-filter>
-          <action android:name="android.intent.action" />
-        </intent-filter>
-      </activity>
-      <service android:name="com.tencent.android.tpush.service.XGPushService" android:exported="true" android:persistent="true"
-      android:process=":xg_service_v2"></service>
-      <service android:name="com.tencent.android.tpush.rpc.XGRemoteService" android:exported="true">
-        <intent-filter>
-          <action android:name="$PACKAGE.PUSH_ACTION" />
-        </intent-filter>
-      </service>
-      <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID"></meta-data>
-      <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY"></meta-data>
+      <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID" tools:replace="android:value" />
+      <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY" tools:replace="android:value" />
     </config-file>
+
+    <!-- 信鸽 JCenter依赖 -->
+    <framework src="com.tencent.xinge:xinge:3.1.6-alpha" />
+    <framework src="com.tencent.mid:mid:3.73-alpha" />
+
     <source-file src="src/android/XGPushPlugin.java" target-dir="src/net/sunlu/xgpush" />
     <source-file src="src/android/XGPushReceiver.java" target-dir="src/net/sunlu/xgpush" />
-    <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />
-    <!-- Tencent XGPush SDK  -->
-    <resource-file src="sdk/android/libs/jg_filter_sdk_1.1.jar" target="libs/jg_filter_sdk_1.1.jar" />
-    <resource-file src="sdk/android/libs/Xg_sdk_v2.42_20160111_1539.jar" target="libs/Xg_sdk_v2.42_20160111_1539.jar" />
-    <resource-file src="sdk/android/libs/wup-1.0.0.E-SNAPSHOT.jar" target="libs/wup-1.0.0.E-SNAPSHOT.jar" />
-	
-    <resource-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsSecurity.so" target="libs/armeabi/libtpnsSecurity.so"/>
-    <resource-file src="sdk/android/Other-Platform-SO/armeabi/libtpnsWatchdog.so" target="libs/armeabi/libtpnsWatchdog.so"/>
-    <resource-file src="sdk/android/Other-Platform-SO/armeabi-v7a/libtpnsSecurity.so" target="libs/armeabi-v7a/libtpnsSecurity.so"/>
-    <resource-file src="sdk/android/Other-Platform-SO/armeabi-v7a/libtpnsWatchdog.so" target="libs/armeabi-v7a/libtpnsWatchdog.so"/>
+    <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />    
   </platform>
+
   <!-- ios -->
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
