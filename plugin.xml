@@ -30,7 +30,7 @@
     </config-file>
 
     <!-- 因为用到了tools:replace 所以要添加命名空间  -->
-    <edit-config target="AndroidManifest.xml" parent='/manifest[@xmlns:tools="http://schemas.android.com/tools"]' mode="merge "></edit-config>
+    <edit-config target="AndroidManifest.xml" parent='/manifest[@xmlns:tools="http://schemas.android.com/tools"]' mode="merge"></edit-config>
 
     <!-- 信鸽 JCenter依赖 -->
     <framework src="com.tencent.xinge:xinge:3.1.6-alpha" />
