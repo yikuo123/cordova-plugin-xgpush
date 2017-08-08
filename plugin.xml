@@ -8,8 +8,8 @@
   <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
   <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
 
-  <preference name="ACCESS_ID" default="0"/>
-  <preference name="ACCESS_KEY" default="A"/>
+  <preference name="ACCESS_ID"/>
+  <preference name="ACCESS_KEY"/>
 
   <js-module name="xgpush" src="www/xgpush.js">
     <clobbers target="xgpush" />

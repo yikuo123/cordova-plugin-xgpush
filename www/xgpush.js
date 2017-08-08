@@ -71,23 +71,21 @@ function XGPush() {
     channel.onCordovaReady.subscribe(function () {
         exec(
             function (event) {
-                console.log("[XGPush] Event = " + event.type + ": ", event);
+                console.log("[XGPush] Event：" + JSON.stringify(event));
                 if (event && (event.type in me.channels)) {
                     me.channels[event.type].fire(event);
                 }
             },
             function (e) {
-                console.log("[ERROR] addListener: ", e);
-                //utils.alert("[ERROR] RegisterPush: ", JSON.stringify(e));
+                console.error("[ERROR] addListener: " + JSON.stringify(e));
             }, "XGPush", "addListener", []
             );
 
         me.registerPush(null, function (info) {
-            console.log("[XGPush] RegisterPush: ", info);
+            console.log("[XGPush] RegisterPush: " + JSON.stringify(info));
             channel.onCordovaXGPushReady.fire();
         }, function (e) {
-            console.log("[ERROR] RegisterPush: ", e);
-            //utils.alert("[ERROR] RegisterPush: ", JSON.stringify(e));
+            console.error("[ERROR] RegisterPush: " + JSON.stringify(e));
         });
     });
 }
