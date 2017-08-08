@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-xgpush" version="0.1.0">
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-xgpush" version="1.0.0">
   <name>cordova-plugin-xgpush</name>
   <description>Tencent XGPush Plugin</description>
   <license>MIT</license>
@@ -9,7 +9,7 @@
   <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
    
   <preference name="ACCESS_ID" default="0"/>
-  <preference name="ACCESS_KEY" default=""/>
+  <preference name="ACCESS_KEY" default=" "/>
   
   <js-module name="xgpush" src="www/xgpush.js">
     <clobbers target="xgpush" />
@@ -24,9 +24,13 @@
     </config-file>
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里也定义占位符并替换它  -->
       <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID" tools:replace="android:value" />
       <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY" tools:replace="android:value" />
     </config-file>
+
+    <!-- 因为用到了tools:replace 所以要添加命名空间  -->
+    <edit-config target="AndroidManifest.xml" parent='/manifest[@xmlns:tools="http://schemas.android.com/tools"]' mode="merge "></edit-config>
 
     <!-- 信鸽 JCenter依赖 -->
     <framework src="com.tencent.xinge:xinge:3.1.6-alpha" />
