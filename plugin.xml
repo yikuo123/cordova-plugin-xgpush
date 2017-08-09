@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-xgpush" version="1.0.0">
-  <name>cordova-plugin-xgpush</name>
-  <description>Tencent XGPush Plugin</description>
-  <license>MIT</license>
-  <author>sunlu</author>
-  <keywords>cordova, push, chinese</keywords>
-  <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
-  <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
+    <name>cordova-plugin-xgpush</name>
+    <description>Tencent XGPush Plugin</description>
+    <license>MIT</license>
+    <author>sunlu</author>
+    <keywords>cordova, push, chinese</keywords>
+    <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
+    <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
 
-  <preference name="ACCESS_ID"/>
-  <preference name="ACCESS_KEY"/>
+    <preference name="ACCESS_ID"/>
+    <preference name="ACCESS_KEY"/>
 
-  <js-module name="xgpush" src="www/xgpush.js">
-    <clobbers target="xgpush" />
-  </js-module>
+    <js-module name="xgpush" src="www/xgpush.js">
+        <clobbers target="xgpush"/>
+    </js-module>
 
-  <!-- android -->
-  <platform name="android">
-    <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="XGPush">
-        <param name="android-package" value="net.sunlu.xgpush.XGPushPlugin" />
-      </feature>
-    </config-file>
+    <!-- browser -->
+    <platform name="browser">
+        <js-module src="src/browser/xgpushProxy.js" name="XGPushPluginBrowser">
+            <runs/>
+        </js-module>
+    </platform>
 
-    <config-file target="AndroidManifest.xml" parent="/manifest/application">
-      <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里也定义占位符并替换它  -->
-      <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID" tools:replace="android:value" />
-      <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY" tools:replace="android:value" />
-    </config-file>
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="XGPush">
+                <param name="android-package" value="net.sunlu.xgpush.XGPushPlugin"/>
+            </feature>
+        </config-file>
 
-    <!-- 因为用到了tools:replace 所以要添加命名空间  -->
-    <edit-config file="AndroidManifest.xml" target="." mode="merge">
-      <manifest xmlns:tools="http://schemas.android.com/tools"></manifest>
-    </edit-config>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里也定义占位符并替换它  -->
+            <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID" tools:replace="android:value"/>
+            <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY" tools:replace="android:value"/>
+        </config-file>
 
-    <!-- 信鸽 JCenter依赖 -->
-    <framework src="com.tencent.xinge:xinge:3.1.6-alpha" />
-    <framework src="com.tencent.mid:mid:3.73-alpha" />
+        <!-- 因为用到了tools:replace 所以要添加命名空间  -->
+        <edit-config file="AndroidManifest.xml" target="." mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools"></manifest>
+        </edit-config>
 
-    <source-file src="src/android/XGPushPlugin.java" target-dir="src/net/sunlu/xgpush" />
-    <source-file src="src/android/XGPushReceiver.java" target-dir="src/net/sunlu/xgpush" />
-    <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush" />
-  </platform>
+        <!-- 信鸽 JCenter依赖 -->
+        <framework src="com.tencent.xinge:xinge:3.1.6-alpha"/>
+        <framework src="com.tencent.mid:mid:3.73-alpha"/>
 
-  <!-- ios -->
-  <platform name="ios">
-    <config-file target="config.xml" parent="/*">
-      <feature name="XGPush">
-        <param name="ios-package" value="CDVXGPushPlugin" />
-        <param name="onload" value="true" />
-      </feature>
-    </config-file>
-    <config-file target="*-Info.plist" parent="XGPushMeta">
-      <dict>
-        <key>AccessID</key>
-        <integer>$ACCESS_ID</integer>
-        <key>AccessKey</key>
-        <string>$ACCESS_KEY</string>
-      </dict>
-    </config-file>
-    <!-- Tencent XGPush SDK -->
-    <header-file src="sdk/ios/XGPush.h" />
-    <header-file src="sdk/ios/XGSetting.h" />
-    <source-file src="sdk/ios/libXG-SDK.a" framework="true" />
-    <!-- Cordova Plugin -->
-    <header-file src="src/ios/AppDelegate+CDVXGPush.h" />
-    <source-file src="src/ios/AppDelegate+CDVXGPush.m" />
-    <header-file src="src/ios/CDVXGPushPlugin.h" />
-    <source-file src="src/ios/CDVXGPushPlugin.m" />
-    <!-- Dependencies -->
-    <framework src="libz.dylib" />
-    <framework src="libsqlite3.dylib" />
-    <framework src="CFNetwork.framework" />
-    <framework src="SystemConfiguration.framework" />
-    <framework src="CoreTelephony.framework" />
-    <framework src="Security.framework" />
-  </platform>
+        <source-file src="src/android/XGPushPlugin.java" target-dir="src/net/sunlu/xgpush"/>
+        <source-file src="src/android/XGPushReceiver.java" target-dir="src/net/sunlu/xgpush"/>
+        <source-file src="src/android/XGPushCallback.java" target-dir="src/net/sunlu/xgpush"/>
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="XGPush">
+                <param name="ios-package" value="CDVXGPushPlugin"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="XGPushMeta">
+            <dict>
+                <key>AccessID</key>
+                <integer>$ACCESS_ID</integer>
+                <key>AccessKey</key>
+                <string>$ACCESS_KEY</string>
+            </dict>
+        </config-file>
+        <!-- Tencent XGPush SDK -->
+        <header-file src="sdk/ios/XGPush.h"/>
+        <header-file src="sdk/ios/XGSetting.h"/>
+        <source-file src="sdk/ios/libXG-SDK.a" framework="true"/>
+        <!-- Cordova Plugin -->
+        <header-file src="src/ios/AppDelegate+CDVXGPush.h"/>
+        <source-file src="src/ios/AppDelegate+CDVXGPush.m"/>
+        <header-file src="src/ios/CDVXGPushPlugin.h"/>
+        <source-file src="src/ios/CDVXGPushPlugin.m"/>
+        <!-- Dependencies -->
+        <framework src="libz.dylib"/>
+        <framework src="libsqlite3.dylib"/>
+        <framework src="CFNetwork.framework"/>
+        <framework src="SystemConfiguration.framework"/>
+        <framework src="CoreTelephony.framework"/>
+        <framework src="Security.framework"/>
+    </platform>
 </plugin>

@@ -1,14 +1,14 @@
-var exec = require('cordova/exec'),
-  cordova = require('cordova'),
-  channel = require('cordova/channel'),
-  utils = require('cordova/utils');
+var exec = require('cordova/exec');
+var cordova = require('cordova');
+var channel = require('cordova/channel');
+var utils = require('cordova/utils');
 
 channel.createSticky('onCordovaXGPushReady');
 channel.waitForInitialization('onCordovaXGPushReady');
 
 function XGPush() {
 
-    var me = this;
+    var context = this;
 
     this.channels = {
         'click': channel.create('click'),
@@ -17,18 +17,18 @@ function XGPush() {
         'unRegister': channel.create('unRegister'),
         'show': channel.create('show'),
         'deleteTag': channel.create('deleteTag'),
-        'setTag': channel.create('setTag'),
+        'setTag': channel.create('setTag')
     };
 
     this.on = function (type, func) {
-        if (type in me.channels) {
-            me.channels[type].subscribe(func);
+        if (type in context.channels) {
+            context.channels[type].subscribe(func);
         }
     };
 
     this.un = function (type, func) {
         if (type in this.channels) {
-            me.channels[type].unsubscribe(func);
+            context.channels[type].unsubscribe(func);
         }
     };
 
@@ -72,21 +72,27 @@ function XGPush() {
         exec(
             function (event) {
                 console.log("[XGPush] Event：" + JSON.stringify(event));
-                if (event && (event.type in me.channels)) {
-                    me.channels[event.type].fire(event);
+                if (event && (event.type in context.channels)) {
+                    context.channels[event.type].fire(event);
                 }
             },
             function (e) {
                 console.error("[ERROR] addListener: " + JSON.stringify(e));
-            }, "XGPush", "addListener", []
-            );
+            },
+            "XGPush",
+            "addListener",
+            []
+        );
 
-        me.registerPush(null, function (info) {
-            console.log("[XGPush] RegisterPush: " + JSON.stringify(info));
-            channel.onCordovaXGPushReady.fire();
-        }, function (e) {
-            console.error("[ERROR] RegisterPush: " + JSON.stringify(e));
-        });
+        context.registerPush(
+            null,
+            function (info) {
+                console.log("[XGPush] RegisterPush: " + JSON.stringify(info));
+                channel.onCordovaXGPushReady.fire();
+            },
+            function (e) {
+                console.error("[ERROR] RegisterPush: " + JSON.stringify(e));
+            });
     });
 }
 
