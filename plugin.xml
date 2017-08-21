@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-xgpush" version="1.0.0">
-    <name>cordova-plugin-xgpush</name>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-xgpush-yikuo" version="1.0.0">
+    <name>cordova-plugin-xgpush-yikuo</name>
     <description>Tencent XGPush Plugin</description>
     <license>MIT</license>
     <author>sunlu</author>
     <keywords>cordova, push, chinese</keywords>
-    <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git.git</repo>
+    <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git</repo>
     <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
 
     <preference name="ACCESS_ID"/>
