@@ -24,13 +24,14 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="XGPush">
                 <param name="android-package" value="net.sunlu.xgpush.XGPushPlugin"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里移除它  -->
-            <meta-data android:name="XG_V2_ACCESS_ID" tools:remove="android:value"/>
-            <meta-data android:name="XG_V2_ACCESS_KEY" tools:remove="android:value"/>
+            <meta-data android:name="XG_V2_ACCESS_ID" tools:node="remove"/>
+            <meta-data android:name="XG_V2_ACCESS_KEY" tools:node="remove"/>
         </config-file>
 
         <!-- 因为用到了tools:replace 所以要添加命名空间  -->

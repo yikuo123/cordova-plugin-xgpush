@@ -18,8 +18,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     
-    xpush.setAccessInfo('accessId', 'accessKey');//设置 appid 与 appkey
-    
     //注册信鸽推送
     xpush.registerPush(
         null,
@@ -42,6 +40,13 @@ function onDeviceReady() {
 ```
 ## API
 
+### 配置
+
+选项 | 说明
+----| ----
+XGPushAccessID | 信鸽 AccessID
+XGPushAccessKey | 信鸽 AccessKey
+
 ### 方法
 
 方法                                | 方法名           | 参数说明 
@@ -58,7 +63,7 @@ getLaunchInfo(success)              | app启动自定义参数|
 
 调用例子
 ```js
-    xgpush.registerPush("account",function(event){},function(event){});
+xgpush.registerPush("account",function(event){},function(event){});
 ```
 ### 事件
 

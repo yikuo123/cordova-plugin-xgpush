@@ -32,6 +32,8 @@ public class XGPushPlugin extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         context = cordova.getActivity().getApplicationContext();
+        XGPushConfig.setAccessId(context, preferences.getInteger("XGPushAccessID", 123456));
+        XGPushConfig.setAccessKey(context, preferences.getString("XGPushAccessKey", "ABCDE"));
     }
 
     @Override
