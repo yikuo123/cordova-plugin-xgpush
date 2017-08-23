@@ -96,10 +96,18 @@ static NSDictionary *_luanchOptions=nil;
     
     // 注册接收回调
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveRemoteNotification:) name:kXGPushPluginReceiveNotification object:nil];
-    
-    uint32_t accessId = [[[[NSBundle mainBundle] objectForInfoDictionaryKey:@"XGPushMeta"] valueForKey:@"AccessID"] intValue];
-    NSString* accessKey = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"XGPushMeta"] valueForKey:@"AccessKey"];
-    
+
+    uint32_t accessId = 123456;
+    NSString* accessKey = @"ABCDE";
+
+    if ([self settingForKey:@"XGPushAccessID"]) {
+        accessId = [[self settingForKey:@"XGPushAccessID"] intValue];
+    }
+
+    if ([self settingForKey:@"XGPushAccessKey"]) {
+        accessKey = [[self settingForKey:@"XGPushAccessKey"]];
+    }
+
     [self startApp:accessId key:accessKey];
 }
 
