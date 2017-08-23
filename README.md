@@ -2,7 +2,7 @@
 
 SDK     | version
 ------- | --------------------------------
-android | Xg-Push-SDK-Android-3.1
+android | Xg-Push-SDK-Android-3.1.6
 ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 
 ## 安装方法
@@ -10,25 +10,35 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 打开控制台，进入 Cordova 项目目录，输入：
 
 ```bash
-cordova plugin add cordova-plugin-xgpush-yikuo --variable ACCESS_ID="Your ID" --variable ACCESS_KEY="Your Key"
+cordova plugin add cordova-plugin-xgpush-yikuo
 ```
 ## 示例
 ```js
-    document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 
-    function onDeviceReady() {
-        xgpush.on("register", function (data) {
-            console.log("register:", data);
-        });
+function onDeviceReady() {
+    
+    xpush.setAccessInfo('accessId', 'accessKey');//设置 appid 与 appkey
+    
+    //注册信鸽推送
+    xpush.registerPush(
+        null,
+        function (info) {console.log("RegisterPush: " + JSON.stringify(info));},
+        function (e) {console.error("RegisterPush: " + JSON.stringify(e));}
+    );
+    
+    xgpush.on("register", function (data) {
+        console.log("register:", data);
+    });
 
-        xgpush.on("click", function (data) {
-            alert("click:" + JSON.stringify(data));
-        });
+    xgpush.on("click", function (data) {
+        alert("click:" + JSON.stringify(data));
+    });
 
-        xgpush.getLaunchInfo(function (data) {
-            alert("getLaunchInfo：" + JSON.stringify(data));
-        }); 
-    }
+    xgpush.getLaunchInfo(function (data) {
+        alert("getLaunchInfo：" + JSON.stringify(data));
+    }); 
+}
 ```
 ## API
 
@@ -54,7 +64,7 @@ getLaunchInfo(success)              | app启动自定义参数|
 
 事件        |  事件名             |  参数说明                  
 ------------|---------------------|------------------------------------------
-register    |  注册账号事件       | 
+register    | 注册账号事件       | 
 unRegister  | 反注册事件          |
 message     | 接收到新消息时解法  |
 click       | 通知被点击          |
@@ -62,7 +72,7 @@ show        | 通知成功显示        |
 deleteTag   | 删除标签事件        |
 setTag      | 设计标签事件        |
 ```js
-    xgpush.on("click",function(data){
-        console.log(data);
-    });
+xgpush.on("click",function(data){
+    console.log(data);
+});
 ```

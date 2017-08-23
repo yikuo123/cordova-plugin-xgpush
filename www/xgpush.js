@@ -83,16 +83,7 @@ function XGPush() {
             "addListener",
             []
         );
-
-        context.registerPush(
-            null,
-            function (info) {
-                console.log("[XGPush] RegisterPush: " + JSON.stringify(info));
-                channel.onCordovaXGPushReady.fire();
-            },
-            function (e) {
-                console.error("[ERROR] RegisterPush: " + JSON.stringify(e));
-            });
+        channel.onCordovaXGPushReady.fire();
     });
 }
 

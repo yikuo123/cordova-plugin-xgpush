@@ -8,9 +8,6 @@
     <repo>https://github.com/yikuo123/cordova-plugin-xgpush.git</repo>
     <issue>https://github.com/yikuo123/cordova-plugin-xgpush.git/issues</issue>
 
-    <preference name="ACCESS_ID"/>
-    <preference name="ACCESS_KEY"/>
-
     <js-module name="xgpush" src="www/xgpush.js">
         <clobbers target="xgpush"/>
     </js-module>
@@ -31,9 +28,9 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里也定义占位符并替换它  -->
-            <meta-data android:name="XG_V2_ACCESS_ID" android:value="$ACCESS_ID" tools:replace="android:value"/>
-            <meta-data android:name="XG_V2_ACCESS_KEY" android:value="$ACCESS_KEY" tools:replace="android:value"/>
+            <!-- 因为信鸽sdk的Manifest已经定义了占位符，所以这里移除它  -->
+            <meta-data android:name="XG_V2_ACCESS_ID" tools:remove="android:value"/>
+            <meta-data android:name="XG_V2_ACCESS_KEY" tools:remove="android:value"/>
         </config-file>
 
         <!-- 因为用到了tools:replace 所以要添加命名空间  -->
@@ -57,14 +54,6 @@
                 <param name="ios-package" value="CDVXGPushPlugin"/>
                 <param name="onload" value="true"/>
             </feature>
-        </config-file>
-        <config-file target="*-Info.plist" parent="XGPushMeta">
-            <dict>
-                <key>AccessID</key>
-                <integer>$ACCESS_ID</integer>
-                <key>AccessKey</key>
-                <string>$ACCESS_KEY</string>
-            </dict>
         </config-file>
         <!-- Tencent XGPush SDK -->
         <header-file src="sdk/ios/XGPush.h"/>
