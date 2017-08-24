@@ -13,6 +13,12 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 cordova plugin add cordova-plugin-xgpush-yikuo
 ```
 ## 示例
+
+```xml
+<preference name="XGPushAccessID" value="123456" />
+<preference name="XGPushAccessKey" value="ABCDEF" />
+```
+
 ```js
 document.addEventListener("deviceready", onDeviceReady, false);
 
