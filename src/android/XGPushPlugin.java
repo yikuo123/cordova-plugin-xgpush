@@ -128,7 +128,7 @@ public class XGPushPlugin extends CordovaPlugin {
         }
     }
 
-    /////////////////------API---------////////////////////
+    /////////////////------API---------/////////////////////
 
     private void registerPush(final JSONArray data, final CallbackContext callback) {
 
