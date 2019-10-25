@@ -13,7 +13,7 @@ ios     | Xg-Push-SDK-iOS-2.4.6.xcode6.4
 cordova plugin add cordova-plugin-xgpush-yikuo
 ```
 ## 示例
-```js
+```javascript
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -62,7 +62,7 @@ setAccessInfo(accessId,accessKey)   | 设置访问ID，KEY  |
 getLaunchInfo(success)              | app启动自定义参数|
 
 调用例子
-```js
+```javascript
 xgpush.registerPush("account",function(event){},function(event){});
 ```
 ### 事件
@@ -76,7 +76,7 @@ click       | 通知被点击          |
 show        | 通知成功显示        |
 deleteTag   | 删除标签事件        |
 setTag      | 设计标签事件        |
-```js
+```javascript
 xgpush.on("click",function(data){
     console.log(data);
 });
